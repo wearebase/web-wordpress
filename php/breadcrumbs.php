@@ -4,7 +4,7 @@ function base_getBreadcrumbs() {
 
   // Hack to fix breadcrumbs when you're viewing the news home
   if (is_home()) {
-    $post = get_post(get_option( 'page_for_posts' ));
+    $post = new TimberPost(get_option( 'page_for_posts' ));
   } else {
     global $post;
   }
