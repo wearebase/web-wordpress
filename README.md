@@ -16,7 +16,7 @@ Then include it in your composer:
 
 ```
 "require": {
-  "wearebase/web-front-end-utilities" : "*"
+  "wearebase/web-front-end-wordpress" : "*"
 }
 ```
 
