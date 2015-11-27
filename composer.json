@@ -1,0 +1,14 @@
+{
+    "name": "wearebase/web-front-end-wordpress",
+    "description": "Front End Utilities for Wordpress",
+    "type": "craft-plugin",
+    "require": {
+        "composer/installers": "^1.0"
+    },
+    "authors": [
+        {
+            "name": "Jonathan Ginn",
+            "email": "jon@wearebase.com"
+        }
+    ]
+}
