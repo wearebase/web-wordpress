@@ -43,3 +43,17 @@ If you do not specify this item in `composer.json` this utility will install to 
 
 ## Enabling Sass
 * Add the Sass to your build path
+
+# PHP
+Simply include each of these files in your `functions.php`, then call the functions at a later time.
+
+`post-functions.php` requires Timber as it uses Timber's get_post functions to return TimberPost objects, not WP Posts.
+
+## What's Included:
+* Breadcrumb generator
+* Various TimberPost Functions
+    * Finding latest posts, post children, post parents etc
+* WP Admin Tweaks
+    * Disabling Emojis
+    * Removing 'h1', 'h2' and 'pre' from the WP Richtext Editor
+    * Add Boostrap Responsive Embed to the WP Embedder
