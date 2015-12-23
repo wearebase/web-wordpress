@@ -16,7 +16,7 @@ Then include it in your composer:
 
 ```
 "require": {
-  "wearebase/web-front-end-utilities" : "*"
+  "wearebase/web-front-end-wordpress" : "*"
 }
 ```
 
@@ -42,7 +42,11 @@ If you do not specify this item in `composer.json` this utility will install to 
 # Enabling
 
 ## Enabling Sass
-* Add the Sass to your build path
+Add the Sass to your build path:
+
+```
+add_import_path "wp-content/themes/timber/packages"
+```
 
 # PHP
 Simply include each of these files in your `functions.php`, then call the functions at a later time.
