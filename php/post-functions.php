@@ -7,19 +7,42 @@
 /**
  * latestPosts
  *
- * Retrieves $num latest news posts that are published
+ * Retrieves $num latest posts that are published
  *
  * @param int       $num  number of posts you'd like
- * @param int       $exclude  id of post to exclude
- * @return array    WP_Query
+ * @param array     $exclude  array of ids of post to exclude
+ * @return array    Array of TimberPosts
  */
-function base_latestPosts($num, $exclude = false) {
+function base_latestPosts($num, $exclude = array()) {
     $args = array (
         'post_type'              => array( 'post' ),
         'post_status'            => array( 'publish' ),
         'pagination'             => false,
-        'exclude'                => $exclude,
-        'post__not_in'           => array($exclude),
+        'post__not_in'           => $exclude,
+        'posts_per_page'         => $num,
+        'order'                  => 'DESC'
+    );
+
+    $query = Timber::get_posts( $args );
+    return $query;
+}
+
+/**
+ * latestX
+ *
+ * Retrieves $num latest news posts that are published
+ *
+ * @param int       $num        number of posts you'd like
+ * @param int       $post_type  post type to retrieve
+ * @param array     $exclude    array of ids of post to exclude
+ * @return array    Array of TimberPosts
+ */
+function base_latestX($num, $post_type = 'post', $exclude = array()) {
+    $args = array (
+        'post_type'              => array( $post_type ),
+        'post_status'            => array( 'publish' ),
+        'pagination'             => false,
+        'post__not_in'           => $exclude,
         'posts_per_page'         => $num,
         'order'                  => 'DESC'
     );
