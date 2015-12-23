@@ -14,17 +14,7 @@
  * @return array    Array of TimberPosts
  */
 function base_latestPosts($num, $exclude = array()) {
-    $args = array (
-        'post_type'              => array( 'post' ),
-        'post_status'            => array( 'publish' ),
-        'pagination'             => false,
-        'post__not_in'           => $exclude,
-        'posts_per_page'         => $num,
-        'order'                  => 'DESC'
-    );
-
-    $query = Timber::get_posts( $args );
-    return $query;
+    return base_latestX($num, 'post', $exclude);
 }
 
 /**
