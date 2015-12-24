@@ -22,14 +22,14 @@ function base_latestPosts($num, $exclude = array()) {
  *
  * Retrieves $num latest news posts that are published
  *
- * @param int       $num        number of posts you'd like
- * @param int       $post_type  post type to retrieve
- * @param array     $exclude    array of ids of post to exclude
- * @return array    Array of TimberPosts
+ * @param int           $num        number of posts you'd like
+ * @param string/array  $post_type  single post type to retrieve (string) OR array of strings
+ * @param array         $exclude    array of ids of post to exclude
+ * @return array        Array of TimberPosts
  */
 function base_latestX($num, $post_type = 'post', $exclude = array()) {
     $args = array (
-        'post_type'              => array( $post_type ),
+        'post_type'              => $post_type,
         'post_status'            => array( 'publish' ),
         'pagination'             => false,
         'post__not_in'           => $exclude,
