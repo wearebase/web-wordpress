@@ -1,28 +1,18 @@
-# Info
-This project is a collection of useful utilities, applicable to Wordpress (and Timber) projects.
+# Caveat: This is not a Craft Plugin
+Because Composer doesn't let you install to a folder of your choice, at the current time we are hijacking the [composer/installers](https://github.com/composer/installers) package for 'Craft Plugins'. This means you must add an item to your composer.json to place it in a folder of your choice.
+
+This will only negatively affect users who use Craft CMS. And as this is a package designed for a Wordpress project, that shouldn't be a problem... right?
 
 # Install
-In your `composer.json`, add a new section for repositories:
-
-```
-"repositories": [
-  { "type": "vcs", "url": "GIT-URL" }
-]
-```
-
-And add the url of this repository.
-
-Then include it in your composer:
+Include it in your composer:
 
 ```
 "require": {
-  "wearebase/web-front-end-wordpress" : "*"
+  "wearebase/web-wordpress" : "*"
 }
 ```
 
 And specify a version or minimum version.
-
-As this repo is private on BitBucket, your development machine *and* your servers will need authorised keys on bitbucket to pull this repo.
 
 # Configure where you want the package to go
 In your `composer.json`, add the following:
@@ -61,3 +51,4 @@ Simply include each of these files in your `functions.php`, then call the functi
     * Disabling Emojis
     * Removing 'h1', 'h2' and 'pre' from the WP Richtext Editor
     * Add Boostrap Responsive Embed to the WP Embedder
+    * Removing elements from the WP Admin Quickbar
