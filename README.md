@@ -3,6 +3,10 @@ Because Composer doesn't let you install to a folder of your choice, at the curr
 
 This will only negatively affect users who use Craft CMS. And as this is a package designed for a Wordpress project, that shouldn't be a problem... right?
 
+# Requirements
+
+This package depends on "wpackagist-plugin/timber-library": "^1"
+
 # Install
 Include it in your composer:
 

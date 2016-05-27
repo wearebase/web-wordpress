@@ -1,6 +1,6 @@
 <?php
 
-if (!class_exists('Timber')) {
+if (!class_exists(\Timber\Timber::class)) {
     add_action('admin_notices', function () {
             echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="'.esc_url(admin_url('plugins.php#timber')).'">'.esc_url(admin_url('plugins.php')).'</a></p></div>';
         });
@@ -16,7 +16,7 @@ function base_getBreadcrumbs() {
 
   // Hack to fix breadcrumbs when you're viewing the news home
   if (is_home()) {
-    $post = new \Timber\TimberPost(get_option( 'page_for_posts' ));
+    $post = new \Timber\Post(get_option( 'page_for_posts' ));
   } else {
     global $post;
   }
@@ -28,7 +28,7 @@ function base_getBreadcrumbs() {
 
     while ($parent_id) {
       $page = get_page($parent_id);
-      $breadcrumbs[] = new \Timber\TimberPost($page->ID);
+      $breadcrumbs[] = new \Timber\Post($page->ID);
       $parent_id = $page->post_parent;
     }
 
@@ -37,7 +37,7 @@ function base_getBreadcrumbs() {
 
   // Add 'Blog Home' to breadcrumbs if you're on a news post or archive
   if ((is_single() || is_archive()) && !is_search()) {
-    $breadcrumbs[] = new \Timber\TimberPost(get_option( 'page_for_posts' ));
+    $breadcrumbs[] = new \Timber\Post(get_option( 'page_for_posts' ));
   }
 
   return $breadcrumbs;
