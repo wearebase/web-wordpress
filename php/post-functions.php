@@ -1,6 +1,6 @@
 <?php
 
-if (!class_exists('Timber')) {
+if (!class_exists(\Timber\Timber::class)) {
     add_action('admin_notices', function () {
             echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="'.esc_url(admin_url('plugins.php#timber')).'">'.esc_url(admin_url('plugins.php')).'</a></p></div>';
         });
@@ -41,13 +41,13 @@ function base_latestX($num, $post_type = 'post', $exclude = array()) {
         'order'                  => 'DESC'
     );
 
-    $query = Timber::get_posts( $args );
+    $query = \Timber\Timber::get_posts( $args );
     return $query;
 }
 
 // Get the post object of the parent of this page
 function base_getParent () {
-    $parent = Timber::get_post(base_return_id());
+    $parent = \Timber\Timber::get_post(base_return_id());
 
     return $parent;
 }
@@ -67,7 +67,7 @@ function base_getSiblings () {
         'post_status' => 'publish'
     );
 
-    $pages = Timber::get_posts($args); 
+    $pages = \Timber\Timber::get_posts($args);
 
     return $pages;
 }
@@ -82,16 +82,16 @@ function base_getPageChildren () {
       'post_type' => 'page',
       'orderby' => 'menu_order'
     );
-    return Timber::get_posts($children_args);
+    return \Timber\Timber::get_posts($children_args);
 }
 
 function base_getPage($id) {
-    return Timber::get_post($id);
+    return \Timber\Timber::get_post($id);
 }
 
 function base_randomItem($type = 'page') {
     $args = array( 'post_type' => $type, 'numberposts' => 1, 'orderby' => 'rand' );
-    $rand_posts = Timber::get_posts( $args );
+    $rand_posts = \Timber\Timber::get_posts( $args );
 
     return $rand_posts[0];
 }
