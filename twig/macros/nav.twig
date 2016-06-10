@@ -1,0 +1,37 @@
+{% macro link(item) -%}
+  <a href="{{ item.get_link }}" class="c-nav__link">
+    {{ item.title }}
+  </a>
+{%- endmacro %}
+
+{% macro dropdownLink(item) -%}
+  <a href="{{ item.get_link }}" class="c-nav__link">
+    {{ item.title }}
+  </a>
+{%- endmacro %}
+
+{% macro item(item, loop) -%}
+  {% import _self as nav %}
+
+  <li class="c-nav__item c-nav__item--level-{{ item.level }} {{ item.classes|join(' ')}} {{ item.get_children ? 'has-children' }} {{ item.current ? 'active' }} c-nav__item--id-{{ loop.index0 }}">
+    {% if item.get_children %}
+      {{ nav.dropdownLink(item) }}
+
+      <ul class="c-nav__dropdown-menu c-nav__dropdown-menu--level-{{ item.level }}">
+        {% for child in item.get_children %}
+          {{ nav.item(child, loop) }}
+        {% endfor %}
+      </ul>
+    {% else %}
+      {{ nav.link(item) }}
+    {% endif %}
+  </li>
+{%- endmacro %}
+
+{% macro menu(menu) -%}
+  {% import _self as nav %}
+
+  {% for items in menu %}
+    {{ nav.item(items, loop) }}
+  {% endfor %}
+{%- endmacro %}
