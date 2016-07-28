@@ -66,3 +66,11 @@ function ba_before_admin_bar_render()
     $wp_admin_bar->remove_menu('wp-logo');
 }
 add_action( 'wp_before_admin_bar_render', 'ba_before_admin_bar_render' );
+
+/**
+ * Set default attachment link to no link
+ */
+function set_link_type() {
+    update_option('image_default_link_type','none');
+}
+add_action( 'init', 'set_link_type' );
