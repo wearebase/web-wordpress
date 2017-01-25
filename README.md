@@ -1,8 +1,3 @@
-# Caveat: This is not a Craft Plugin
-Because Composer doesn't let you install to a folder of your choice, at the current time we are hijacking the [composer/installers](https://github.com/composer/installers) package for 'Craft Plugins'. This means you must add an item to your composer.json to place it in a folder of your choice.
-
-This will only negatively affect users who use Craft CMS. And as this is a package designed for a Wordpress project, that shouldn't be a problem... right?
-
 # Requirements
 
 This package depends on "wpackagist-plugin/timber-library": "^1"
@@ -19,19 +14,15 @@ Include it in your composer:
 And specify a version or minimum version.
 
 # Configure where you want the package to go
-In your `composer.json`, add the following:
+If you want to install somewhere other than `vendor`, in your `composer.json` add the following:
 
 ```
 "extra": {
   "installer-paths": {
-    "src/components/{$name}": ["type:craft-plugin"]
+    "wp-content/themes/timber/packages/{$name}": ["wearebase/web-wordpress"]
   }
 }
 ```
-
-This plugin identifies itself as a `craft-plugin`. The addition above will send all `craft-plugin` to a directory you specify. I recommend to send it to your src directory in a third-party folder you can easily access with Sass, Twig, etc. If using Wordpress, send it to a theme/third-party directory and gitignore that folder.
-
-If you do not specify this item in `composer.json` this utility will install to `craft/plugins/{$name}` as that is the default from `composer/installer` package.
 
 # Enabling
 
